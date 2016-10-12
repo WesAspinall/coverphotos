@@ -1,6 +1,5 @@
 var hero = {
-  templateUrl: './hero.html',
-  controller: 'AppCtrl'
+  templateUrl: './hero.html'
 };
 
 angular

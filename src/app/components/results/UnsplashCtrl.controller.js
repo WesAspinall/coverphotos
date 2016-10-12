@@ -1,4 +1,4 @@
-function HomeCtrl(HomeService) {
+function UnsplashCtrl(UnsplashService) {
 
   let vm = this;
 
@@ -13,7 +13,7 @@ function HomeCtrl(HomeService) {
 
   function getData() {
 
-    return HomeService.getData().then((res) => {
+    return UnsplashService.getData().then((res) => {
       vm.list = res;
       console.log(vm.list);
       return vm.list;
@@ -25,5 +25,5 @@ function HomeCtrl(HomeService) {
 }
 
 angular
-  .module('components.home')
-  .controller('HomeCtrl', HomeCtrl);
+  .module('components.results')
+  .controller('UnsplashCtrl', UnsplashCtrl);

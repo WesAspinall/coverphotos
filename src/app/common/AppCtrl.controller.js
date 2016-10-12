@@ -2,16 +2,6 @@ function AppCtrl() {
   var vm = this;
   vm.hello = 'hedlo';
 
-  vm.data = [
-    'Home',
-    'About Us',
-    'Menu',
-    'Catering',
-    'Community Events',
-    'Locations',
-    'Contact Us'
-  ];
-
 
 }
 

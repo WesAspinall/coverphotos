@@ -1,4 +1,4 @@
-function HomeService($http) {
+function UnsplashService($http) {
 
   var API = 'https://api.yelp.com/v2/search?term=food&location=San+Francisco';
 
@@ -15,5 +15,5 @@ function HomeService($http) {
 }
 
 angular
-  .module('components.home')
-  .service('HomeService', HomeService);
+  .module('components.results')
+  .service('UnsplashService', UnsplashService);
