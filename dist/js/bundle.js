@@ -17,13 +17,20 @@ angular
 'use strict';
 angular
   .module('components', [
-    'components.results'
+    'components.home'
   ]);
 })(window.angular);
 (function(angular){
 'use strict';
 angular
-  .module('components.results', [
+  .module('components.home', [
+    'results'
+  ]);
+})(window.angular);
+(function(angular){
+'use strict';
+angular
+  .module('results', [
     'ui.router'
   ]);})(window.angular);
 (function(angular){
@@ -117,7 +124,7 @@ function UnsplashCtrl(UnsplashService) {
 }
 
 angular
-  .module('components.results')
+  .module('results')
   .controller('UnsplashCtrl', UnsplashCtrl);})(window.angular);
 (function(angular){
 'use strict';
@@ -139,7 +146,7 @@ function UnsplashService($http) {
 }
 
 angular
-  .module('components.results')
+  .module('results')
   .service('UnsplashService', UnsplashService);})(window.angular);
 (function(angular){
 'use strict';
@@ -149,7 +156,7 @@ var results = {
 };
 
 angular
-  .module('components.results')
+  .module('results')
   .component('results', results)
   .config(["$stateProvider", function($stateProvider) {
     $stateProvider

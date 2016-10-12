@@ -4,7 +4,7 @@ var results = {
 };
 
 angular
-  .module('components.results')
+  .module('results')
   .component('results', results)
   .config(function($stateProvider) {
     $stateProvider

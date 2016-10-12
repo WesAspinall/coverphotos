@@ -25,5 +25,5 @@ function UnsplashCtrl(UnsplashService) {
 }
 
 angular
-  .module('components.results')
+  .module('results')
   .controller('UnsplashCtrl', UnsplashCtrl);
