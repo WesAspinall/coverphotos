@@ -1,0 +1,37 @@
+@import './font-awesome/font-awesome.scss';
+@import './root.scss';
+
+* {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font: 300 14px/1.4 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #5c5c5c;
+  background: #FFFFFF;
+}
+
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0.1;
+    transform: scale(.97);
+  }
+  100% {
+    opacity: 100%;
+    transform: scale(1);
+  }
+}
+
+@keyframes scaleIn {
+  0% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
