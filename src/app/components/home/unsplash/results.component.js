@@ -4,7 +4,7 @@ var results = {
 };
 
 angular
-  .module('results')
+  .module('unsplash')
   .component('results', results)
   .config(function($stateProvider) {
     $stateProvider

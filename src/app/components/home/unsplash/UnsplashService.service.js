@@ -15,5 +15,5 @@ function UnsplashService($http) {
 }
 
 angular
-  .module('results')
+  .module('unsplash')
   .service('UnsplashService', UnsplashService);

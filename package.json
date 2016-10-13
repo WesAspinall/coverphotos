@@ -1,5 +1,5 @@
 {
-  "name": "netflix-and-chill",
+  "name": "coverphotos",
   "version": "0.1.0",
   "author": "@WesAspinall",
   "description": "",
@@ -9,7 +9,7 @@
     "deploy": "gulp production --deploy"
   },
   "license": "MIT",
-  "repository": "https://github.com/WesAspinall/netflix-and-chill.git",
+  "repository": "https://github.com/WesAspinall/coverphotos.git",
   "dependencies": {
     "angular": "^1.5.8",
     "angular-loading-bar": "^0.9.0",

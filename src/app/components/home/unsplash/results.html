@@ -1,0 +1,17 @@
+
+<div>
+
+  <h2>{{ $ctrl.title }}</h2>
+
+  <form ng-submit="$ctrl.getPhoto(query)">
+    <input type="text" placeholder="Search for Photo" ng-model="query">
+    <button>Search</button>
+  </form>
+  {{query}}
+
+  <div class="photoHolder">
+    <img ng-src="{{ $ctrl.photoUrl1 }}">
+  </div>
+  <img ng-src="{{ $ctrl.photoUrl2}}">
+
+</div>

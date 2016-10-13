@@ -1,4 +1,4 @@
 angular
-  .module('results', [
+  .module('unsplash', [
     'ui.router'
   ]);
