@@ -1,6 +1,6 @@
 function UnsplashService($http) {
 
-  var API = 'https://api.yelp.com/v2/search?term=food&location=San+Francisco';
+  var API = '/api/token';
 
   this.getData = getData;
 

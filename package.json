@@ -1,21 +1,25 @@
 {
-  "name": "netflix-and-chill",
+  "name": "coverphotos",
   "version": "0.1.0",
   "author": "@WesAspinall",
-  "description": "",
+  "description": "get high-quality cover photos in different sizes",
+  "main": "server.js",
   "scripts": {
     "start": "gulp",
     "test": "karma start",
     "deploy": "gulp production --deploy"
   },
   "license": "MIT",
-  "repository": "https://github.com/WesAspinall/netflix-and-chill.git",
+  "repository": "https://github.com/WesAspinall/coverphotos.git",
   "dependencies": {
     "angular": "^1.5.8",
     "angular-loading-bar": "^0.9.0",
     "angular-messages": "^1.5.8",
     "angular-ui-router": "1.0.0-beta.2",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
     "font-awesome": "^4.6.3",
+    "mongoose": "^4.6.3",
     "yelp": "^1.0.1"
   },
   "devDependencies": {
@@ -44,6 +48,7 @@
     "karma-phantomjs-launcher": "^1.0.1",
     "karma-spec-reporter": "0.0.23",
     "node-font-awesome": "^1.0.2",
+    "nodemon": "^1.11.0",
     "path": "^0.12.7",
     "yargs": "^5.0.0"
   }

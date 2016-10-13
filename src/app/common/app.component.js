@@ -8,7 +8,7 @@ angular
   .component('app', app)
   .config(function($stateProvider, $urlRouterProvider) {
 
-    $urlRouterProvider.otherwise('/');
+    // $urlRouterProvider.otherwise('/');
     $stateProvider
       .state('app', {
         redirectTo: 'home',
