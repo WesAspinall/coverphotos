@@ -24,13 +24,13 @@ angular
 'use strict';
 angular
   .module('components.home', [
-    'results'
+    'unsplash'
   ]);
 })(window.angular);
 (function(angular){
 'use strict';
 angular
-  .module('results', [
+  .module('unsplash', [
     'ui.router'
   ]);})(window.angular);
 (function(angular){
@@ -65,7 +65,7 @@ angular
   .component('app', app)
   .config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider) {
 
-    // $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/');
     $stateProvider
       .state('app', {
         redirectTo: 'home',
@@ -94,33 +94,27 @@ angular
   .component('searchBar', searchBar);})(window.angular);
 (function(angular){
 'use strict';
-UnsplashCtrl.$inject = ["$sce", "$http"];
-function UnsplashCtrl($sce, $http) {
+function UnsplashCtrl() {
 
-  let ctrl = this;
-  ctrl.data = '';
-  ctrl.getData = getData;
-  ctrl.activate = activate;
-  var API = '//localhost:8000/api/unsplash/photos';
+  let vm = this;
+  vm.title = 'results';
+  vm.getPhoto = getPhoto;
+  vm.activate = activate;
   activate();
 
   function activate() {
-    return getData();
+    getPhoto();
   }
 
-  function getData() {
-
-    $http.get(API).then(function(res) {
-      ctrl.data = res.data;
-    });
-
+  function getPhoto() {
+    vm.photoUrl1 = 'https://source.unsplash.com/?buildings,miami';
   }
 
 
 }
 
 angular
-  .module('results')
+  .module('unsplash')
   .controller('UnsplashCtrl', UnsplashCtrl);})(window.angular);
 (function(angular){
 'use strict';
@@ -140,7 +134,7 @@ function UnsplashService($http) {
 }
 
 angular
-  .module('results')
+  .module('unsplash')
   .service('UnsplashService', UnsplashService);})(window.angular);
 (function(angular){
 'use strict';
@@ -150,7 +144,7 @@ var results = {
 };
 
 angular
-  .module('results')
+  .module('unsplash')
   .component('results', results)
   .config(["$stateProvider", function($stateProvider) {
     $stateProvider
@@ -167,4 +161,4 @@ angular.module('templates', []).run(['$templateCache', function($templateCache) 
 $templateCache.put('./app.html','<div class="app"><hero></hero><div id="main"><div id="content"><div id="wrapper"><div class="box" ui-view></div></div></div></div></div>');
 $templateCache.put('./hero.html','<div class="hero"><div><h1>unsplash image search</h1></div><search-bar></search-bar></div>');
 $templateCache.put('./search-bar.html','<div>hello from search bar</div>');
-$templateCache.put('./results.html','<div><h1>{{$ctrl.data}}</h1><div class="home-content"><p>placeholder</p></div></div>');}]);})(window.angular);
+$templateCache.put('./results.html','<div><h2>{{ $ctrl.title }}</h2><form ng-submit="$ctrl.getPhoto(query)"><input type="text" placeholder="Search for Photo" ng-model="query"> <button>Search</button></form>{{query}}<div class="photoHolder"><img ng-src="{{ $ctrl.photoUrl1 }}"></div></div>');}]);})(window.angular);
