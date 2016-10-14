@@ -5,10 +5,10 @@ function UnsplashService($http) {
   this.getData = getData;
 
   function getData() {
-    return $http.get(API, {cache: true}).then((res) => {
-
+    $http.get(API, {
+      cache: true
+    }).then((res) => {
       return res;
-
     });
   }
 

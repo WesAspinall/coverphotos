@@ -14,7 +14,7 @@ import server from 'browser-sync';
 import del from 'del';
 import path from 'path';
 import child from 'child_process';
-import nodemon from 'gulp-nodemon';
+import nodemon from 'nodemon';
 import chalk from 'chalk';
 import notify from 'gulp-notify';
 
@@ -130,6 +130,15 @@ gulp.task('nodemon', () => {
   return stream;
 });
 
+gulp.task('nodemon', () => {
+  gulp.src('server.js')
+  var stream = nodemon({
+    script: 'server.js'
+  })
+  return stream;
+})
+
+
 gulp.task('clean', cb => del(paths.dist + '**/*', cb));
 
 gulp.task('copy', ['clean'], () => {
@@ -155,7 +164,9 @@ gulp.task('default', [
 ]);
 
 gulp.task('start', ['default']);
+
 gulp.task('start nodemon', ['default']);
+
 gulp.task('production', [
   'copy',
   'scripts'

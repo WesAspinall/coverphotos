@@ -1,24 +1,18 @@
 function UnsplashCtrl(UnsplashService) {
 
-  let vm = this;
-
-
-  vm.getData = getData;
-  vm.activate = activate;
+  let ctrl = this;
+  ctrl.getData = getData;
+  ctrl.activate = activate;
   activate();
 
   function activate() {
-    getData();
+    return getData();
   }
 
   function getData() {
-
-    return UnsplashService.getData().then((res) => {
-     
-      console.log(res);
-    
+    UnsplashService.getData().then((res) => {
+      return console.log(res);
     });
-
   }
 
 

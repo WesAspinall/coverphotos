@@ -22,7 +22,6 @@ function handleError(res, reason, message, code) {
   });
 }
 
-
 app.get('/api/unsplash/photos', function(req, res) {
   res.send(photos.unsplash());
 });

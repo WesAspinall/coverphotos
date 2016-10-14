@@ -19,9 +19,7 @@
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "font-awesome": "^4.6.3",
-    "mongodb": "^2.2.10",
-    "mongoose": "^4.6.3",
-    "yelp": "^1.0.1"
+    "mongodb": "^2.2.10"
   },
   "devDependencies": {
     "babel-core": "^6.11.4",
@@ -50,6 +48,7 @@
     "karma-phantomjs-launcher": "^1.0.1",
     "karma-spec-reporter": "0.0.23",
     "node-font-awesome": "^1.0.2",
+    "nodemon": "^1.11.0",
     "path": "^0.12.7",
     "yargs": "^5.0.0"
   }

@@ -1,7 +1,4 @@
 function AppCtrl() {
-  var vm = this;
-  vm.hello = 'hedlo';
-
 
 }
 
