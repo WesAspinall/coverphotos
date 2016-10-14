@@ -1,4 +1,4 @@
 angular
   .module('components.home', [
-    'results'
+    'unsplash'
   ]);

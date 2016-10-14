@@ -8,10 +8,6 @@ var app = express();
 
 app.use(express.static(__dirname + '/dist'));
 app.use(bodyParser.json());
-// app.use(function() {
-//   photos.unsplash();
-//   next();
-// })
 
 app.use(function(req,res,next) {
   res.header('Access-Control-Allow-Origin', '*');

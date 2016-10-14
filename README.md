@@ -1,2 +1,2 @@
-# netflix-and-chill
+# coverphotos
 

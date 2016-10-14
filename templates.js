@@ -2,4 +2,4 @@ angular.module('templates', []).run(['$templateCache', function($templateCache) 
 $templateCache.put('./app.html','<div class="app"><hero></hero><div id="main"><div id="content"><div id="wrapper"><div class="box" ui-view></div></div></div></div></div>');
 $templateCache.put('./hero.html','<div class="hero"><div><h1>unsplash image search</h1></div><search-bar></search-bar></div>');
 $templateCache.put('./search-bar.html','<div>hello from search bar</div>');
-$templateCache.put('./results.html','<div><h1>{{$ctrl.data}}</h1><div class="home-content"><p>placeholder</p></div></div>');}]);
+$templateCache.put('./results.html','<div><h2>{{ $ctrl.title }}</h2><form ng-submit="$ctrl.getPhoto(query)"><input type="text" placeholder="Search for Photo" ng-model="query"> <button>Search</button></form>{{query}}<div class="photoHolder"><img ng-src="{{ $ctrl.photoUrl1 }}"></div></div>');}]);
