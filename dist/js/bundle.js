@@ -101,10 +101,10 @@ function UnsplashCtrl(UnsplashService) {
 
   let vm = this;
 
-  vm.list = '';
+
   vm.getData = getData;
   vm.activate = activate;
-  // activate();
+  activate();
 
   function activate() {
     getData();
@@ -113,9 +113,9 @@ function UnsplashCtrl(UnsplashService) {
   function getData() {
 
     return UnsplashService.getData().then((res) => {
-      vm.list = res;
-      console.log(vm.list);
-      return vm.list;
+     
+      console.log(res);
+    
     });
 
   }
@@ -131,7 +131,7 @@ angular
 UnsplashService.$inject = ["$http"];
 function UnsplashService($http) {
 
-  var API = 'https://api.yelp.com/v2/search?term=food&location=San+Francisco';
+  var API = 'https://unsplash-express-api.herokuapp.com/api/unsplash/photos';
 
   this.getData = getData;
 

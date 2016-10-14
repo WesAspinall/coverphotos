@@ -1,0 +1,8 @@
+{
+  "name": "MEAN Contact List Example",
+  "description": " ",
+  "repository": "https://github.com/wesaspinall/coverphotos",
+  "logo": "",
+  "keywords": ["node", "express", "angular", "MEAN", "mongodb", "REST", "API"],
+  "addons": ["mongolab"]
+}
