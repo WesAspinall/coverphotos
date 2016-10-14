@@ -9,17 +9,17 @@ angular
 (function(angular){
 'use strict';
 angular
-  .module('app', [
-    'ui.router'
-  ])
-  ;})(window.angular);
-(function(angular){
-'use strict';
-angular
   .module('components', [
     'components.home'
   ]);
 })(window.angular);
+(function(angular){
+'use strict';
+angular
+  .module('app', [
+    'ui.router'
+  ])
+  ;})(window.angular);
 (function(angular){
 'use strict';
 angular
