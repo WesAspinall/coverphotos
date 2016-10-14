@@ -1,13 +1,11 @@
 function UnsplashService($http) {
 
-  var API = 'https://unsplash-express-api.herokuapp.com/api/unsplash/photos';
+  var API = 'http://localhost:8000/api/unsplash/photos';
 
   this.getData = getData;
 
   function getData() {
-    $http.get(API, {
-      cache: true
-    }).then((res) => {
+    $http.get(API).then(function(res) {
       return res;
     });
   }

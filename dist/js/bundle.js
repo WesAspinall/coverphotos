@@ -65,13 +65,14 @@ angular
   .component('app', app)
   .config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider) {
 
-    $urlRouterProvider.otherwise('/');
+    // $urlRouterProvider.otherwise('/');
     $stateProvider
       .state('app', {
         redirectTo: 'home',
         url: '/',
         component: 'app'
       });
+      
   }]);})(window.angular);
 (function(angular){
 'use strict';
@@ -93,21 +94,14 @@ angular
   .component('searchBar', searchBar);})(window.angular);
 (function(angular){
 'use strict';
-var home = {
-  templateUrl: './home.html'
-};
-
-angular
-  .module('components.home')
-  .component('home', home);})(window.angular);
-(function(angular){
-'use strict';
-UnsplashCtrl.$inject = ["UnsplashService"];
-function UnsplashCtrl(UnsplashService) {
+UnsplashCtrl.$inject = ["$sce", "$http"];
+function UnsplashCtrl($sce, $http) {
 
   let ctrl = this;
+  ctrl.data = '';
   ctrl.getData = getData;
   ctrl.activate = activate;
+  var API = '//localhost:8000/api/unsplash/photos';
   activate();
 
   function activate() {
@@ -115,9 +109,11 @@ function UnsplashCtrl(UnsplashService) {
   }
 
   function getData() {
-    UnsplashService.getData().then((res) => {
-      return console.log(res);
+
+    $http.get(API).then(function(res) {
+      ctrl.data = res.data;
     });
+
   }
 
 
@@ -131,14 +127,12 @@ angular
 UnsplashService.$inject = ["$http"];
 function UnsplashService($http) {
 
-  var API = 'https://unsplash-express-api.herokuapp.com/api/unsplash/photos';
+  var API = 'http://localhost:8000/api/unsplash/photos';
 
   this.getData = getData;
 
   function getData() {
-    $http.get(API, {
-      cache: true
-    }).then((res) => {
+    $http.get(API).then(function(res) {
       return res;
     });
   }
@@ -173,4 +167,4 @@ angular.module('templates', []).run(['$templateCache', function($templateCache) 
 $templateCache.put('./app.html','<div class="app"><hero></hero><div id="main"><div id="content"><div id="wrapper"><div class="box" ui-view></div></div></div></div></div>');
 $templateCache.put('./hero.html','<div class="hero"><div><h1>unsplash image search</h1></div><search-bar></search-bar></div>');
 $templateCache.put('./search-bar.html','<div>hello from search bar</div>');
-$templateCache.put('./results.html','<div><div class="home-content"><p>placeholder</p></div></div>');}]);})(window.angular);
+$templateCache.put('./results.html','<div><h1>{{$ctrl.data}}</h1><div class="home-content"><p>placeholder</p></div></div>');}]);})(window.angular);

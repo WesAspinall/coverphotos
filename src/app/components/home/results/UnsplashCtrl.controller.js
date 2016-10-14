@@ -1,8 +1,10 @@
-function UnsplashCtrl(UnsplashService) {
+function UnsplashCtrl($sce, $http) {
 
   let ctrl = this;
+  ctrl.data = '';
   ctrl.getData = getData;
   ctrl.activate = activate;
+  var API = '//localhost:8000/api/unsplash/photos';
   activate();
 
   function activate() {
@@ -10,9 +12,11 @@ function UnsplashCtrl(UnsplashService) {
   }
 
   function getData() {
-    UnsplashService.getData().then((res) => {
-      return console.log(res);
+
+    $http.get(API).then(function(res) {
+      ctrl.data = res.data;
     });
+
   }
 
 
