@@ -1,3 +1,4 @@
 angular.module('templates', []).run(['$templateCache', function($templateCache) {$templateCache.put('./root.html','<div class="root"><div id="root-view" ui-view></div></div>');
-$templateCache.put('./app.html','<div class="app--wrapper"><h1>{{::$ctrl.appTitle}}</h1><photos></photos></div>');
-$templateCache.put('./photos.html','<div class="unsplash-photos"><ul><li ng-repeat="photo in $ctrl.photoList track by $index"><img ng-src="{{photo}}"></li></ul></div>');}]);
+$templateCache.put('./app.html','<div class="app--wrapper"><h1>{{::$ctrl.appTitle}}</h1><!--   <photo-nav></photo-nav> --><photos photolist="$ctrl.photoList" on-update="$ctrl.updateList($event)"></photos></div>');
+$templateCache.put('./photo-nav.html','<div><ul class="categories"><li ng-repeat="item in $ctrl.categories"><a href="" ng-click="$ctrl.selectCategory($index);">{{item.category}}</a></li></ul></div>');
+$templateCache.put('./photos.html','<div class="unsplash-photos"><div><ul class="categories"><li ng-repeat="item in $ctrl.categories"><a href="" ng-click="$ctrl.morePhotos($index);">{{item.category}}</a></li></ul></div><ul><li ng-if="$ctrl.photoList.length" ng-repeat="photo in $ctrl.photoList track by $index" class="photo-list"><img ng-src="{{photo}}"></li></ul></div>');}]);

@@ -7,19 +7,24 @@
   padding: 0;
 }
 
-
-li {
-  list-style-type: none;
-}
-
-
 body {
   font: 300 14px/1.4 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #5c5c5c;
   background: #FFFFFF;
 }
 
+li {
+  list-style-type: none;
+}
 
+.categories li {
+  display: inline-block;
+  padding: 1em;
+}
+
+.photo-list img {
+  animation: fadeIn 1s;
+}
 
 @keyframes fadeIn {
   0% {

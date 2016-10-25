@@ -1,4 +1,8 @@
 <div class='app--wrapper'>
   <h1>{{::$ctrl.appTitle}}</h1>
-  <photos></photos>
+<!--   <photo-nav></photo-nav> -->
+  <photos 
+    photoList = $ctrl.photoList
+    on-update='$ctrl.updateList($event)'>
+  </photos>
 </div>
