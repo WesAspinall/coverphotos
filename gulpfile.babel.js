@@ -17,7 +17,7 @@ import child from 'child_process';
 import nodemon from 'nodemon';
 import chalk from 'chalk';
 import notify from 'gulp-notify';
-
+import fontAwesome from 'node-font-awesome';
 
 const exec = child.exec;
 const argv = yargs.argv;
@@ -51,7 +51,7 @@ const handleError = function(err) {
 
 gulp.task('styles', () => {
   return gulp.src(paths.styles)
-    .pipe(sass({outputStyle: 'compressed'}))
+    .pipe(sass({outputStyle: 'compressed', includePaths: fontAwesome.scssPath}))
     .on('error', handleError)
     .pipe(gulp.dest(paths.dist + 'css/'));
 });

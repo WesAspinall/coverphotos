@@ -1,3 +1,3 @@
 angular.module('templates', []).run(['$templateCache', function($templateCache) {$templateCache.put('./root.html','<div class="root"><div id="root-view" ui-view></div></div>');
 $templateCache.put('./app.html','<div class="app--wrapper"><h1>{{::$ctrl.appTitle}}</h1><photos></photos></div>');
-$templateCache.put('./photos.html','<div class="photos--wrapper"><ul><li ng-repeat="photo in $ctrl.photoList track by $index"><img ng-src="{{photo}}"></li></ul></div>');}]);
+$templateCache.put('./photos.html','<div class="unsplash-photos"><ul><li ng-repeat="photo in $ctrl.photoList track by $index"><img ng-src="{{photo}}"></li></ul></div>');}]);

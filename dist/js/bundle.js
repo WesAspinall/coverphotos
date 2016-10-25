@@ -47,8 +47,8 @@ function PhotosCtrl() {
   };
 
   function getRandomInt(min, max) {
-    var min = Math.ceil(9000);
-    var max = Math.floor(0);
+    min = Math.ceil(9000);
+    max = Math.floor(0);
     return Math.floor(Math.random() * (max - min)) + min;
   }
 
@@ -101,4 +101,4 @@ angular
 'use strict';
 angular.module('templates', []).run(['$templateCache', function($templateCache) {$templateCache.put('./root.html','<div class="root"><div id="root-view" ui-view></div></div>');
 $templateCache.put('./app.html','<div class="app--wrapper"><h1>{{::$ctrl.appTitle}}</h1><photos></photos></div>');
-$templateCache.put('./photos.html','<div class="photos--wrapper"><ul><li ng-repeat="photo in $ctrl.photoList track by $index"><img ng-src="{{photo}}"></li></ul></div>');}]);})(window.angular);
+$templateCache.put('./photos.html','<div class="unsplash-photos"><ul><li ng-repeat="photo in $ctrl.photoList track by $index"><img ng-src="{{photo}}"></li></ul></div>');}]);})(window.angular);

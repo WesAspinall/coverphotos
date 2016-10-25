@@ -11,8 +11,8 @@ function PhotosCtrl() {
   };
 
   function getRandomInt(min, max) {
-    var min = Math.ceil(9000);
-    var max = Math.floor(0);
+    min = Math.ceil(9000);
+    max = Math.floor(0);
     return Math.floor(Math.random() * (max - min)) + min;
   }
 

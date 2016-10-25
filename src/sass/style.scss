@@ -1,6 +1,4 @@
-@import './font-awesome/font-awesome.scss';
-@import './root.scss';
-
+@import 'font-awesome';
 * {
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -9,11 +7,18 @@
   padding: 0;
 }
 
+
+li {
+  list-style-type: none;
+}
+
+
 body {
   font: 300 14px/1.4 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #5c5c5c;
   background: #FFFFFF;
 }
+
 
 
 @keyframes fadeIn {
