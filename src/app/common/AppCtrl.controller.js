@@ -1,5 +1,5 @@
 function AppCtrl() {
-
+  this.appTitle = 'Cover Photos';
 }
 
 angular

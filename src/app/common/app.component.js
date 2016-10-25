@@ -11,7 +11,6 @@ angular
     $urlRouterProvider.otherwise('/');
     $stateProvider
       .state('app', {
-        redirectTo: 'home',
         url: '/',
         component: 'app'
       });

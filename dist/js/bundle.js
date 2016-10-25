@@ -3,7 +3,6 @@
 angular
   .module('root', [
     'app',
-    'components',
     'templates'
   ]);})(window.angular);
 (function(angular){
@@ -13,26 +12,6 @@ angular
     'ui.router'
   ])
   ;})(window.angular);
-(function(angular){
-'use strict';
-angular
-  .module('components', [
-    'components.home'
-  ]);
-})(window.angular);
-(function(angular){
-'use strict';
-angular
-  .module('components.home', [
-    'unsplash'
-  ]);
-})(window.angular);
-(function(angular){
-'use strict';
-angular
-  .module('unsplash', [
-    'ui.router'
-  ]);})(window.angular);
 (function(angular){
 'use strict';
 var root = {
@@ -47,12 +26,47 @@ angular
 (function(angular){
 'use strict';
 function AppCtrl() {
-
+  this.appTitle = 'Cover Photos';
 }
 
 angular
   .module('app')
   .controller('AppCtrl', AppCtrl);})(window.angular);
+(function(angular){
+'use strict';
+function PhotosCtrl() {
+  var vm = this;
+  vm.url = 'https://source.unsplash.com/category/nature/851x399?sig=';
+  vm.quantity = '';
+  vm.photoList = [];
+  vm.getRandomInt = getRandomInt;
+  vm.renderPhotos = renderPhotos;
+
+  this.$postLink = function() {
+    return renderPhotos();
+  };
+
+  function getRandomInt(min, max) {
+    var min = Math.ceil(9000);
+    var max = Math.floor(0);
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
+
+  function renderPhotos() {
+    var photoList = vm.photoList;
+    var url = vm.url;
+    for(var i = 0; i < 5; i++) {
+      photoList.push(url+getRandomInt());
+    } 
+    return vm.photoList;
+  }
+
+
+}
+
+angular
+  .module('app')
+  .controller('PhotosCtrl', PhotosCtrl);})(window.angular);
 (function(angular){
 'use strict';
 var app = {
@@ -68,7 +82,6 @@ angular
     $urlRouterProvider.otherwise('/');
     $stateProvider
       .state('app', {
-        redirectTo: 'home',
         url: '/',
         component: 'app'
       });
@@ -76,89 +89,16 @@ angular
   }]);})(window.angular);
 (function(angular){
 'use strict';
-var hero = {
-  templateUrl: './hero.html'
+var photos = {
+  templateUrl: './photos.html',
+  controller: 'PhotosCtrl'
 };
 
 angular
   .module('app')
-  .component('hero', hero);})(window.angular);
-(function(angular){
-'use strict';
-var searchBar = {
-  templateUrl: './search-bar.html'
-};
-
-angular
-  .module('app')
-  .component('searchBar', searchBar);})(window.angular);
-(function(angular){
-'use strict';
-function UnsplashCtrl() {
-
-  let vm = this;
-  vm.title = 'results';
-  vm.getPhoto = getPhoto;
-  vm.activate = activate;
-  activate();
-
-  function activate() {
-    getPhoto();
-  }
-
-  function getPhoto() {
-    vm.photoUrl1 = 'https://source.unsplash.com/?buildings,miami';
-  }
-
-
-}
-
-angular
-  .module('unsplash')
-  .controller('UnsplashCtrl', UnsplashCtrl);})(window.angular);
-(function(angular){
-'use strict';
-UnsplashService.$inject = ["$http"];
-function UnsplashService($http) {
-
-  var API = 'http://localhost:8000/api/unsplash/photos';
-
-  this.getData = getData;
-
-  function getData() {
-    $http.get(API).then(function(res) {
-      return res;
-    });
-  }
-
-}
-
-angular
-  .module('unsplash')
-  .service('UnsplashService', UnsplashService);})(window.angular);
-(function(angular){
-'use strict';
-var results = {
-  templateUrl: './results.html',
-  controller: 'UnsplashCtrl'
-};
-
-angular
-  .module('unsplash')
-  .component('results', results)
-  .config(["$stateProvider", function($stateProvider) {
-    $stateProvider
-      .state('home', {
-        parent: 'app',
-        url:'^/home',
-        component: 'results'
-      });
-  }]);
-})(window.angular);
+  .component('photos', photos);})(window.angular);
 (function(angular){
 'use strict';
 angular.module('templates', []).run(['$templateCache', function($templateCache) {$templateCache.put('./root.html','<div class="root"><div id="root-view" ui-view></div></div>');
-$templateCache.put('./app.html','<div class="app"><hero></hero><div id="main"><div id="content"><div id="wrapper"><div class="box" ui-view></div></div></div></div></div>');
-$templateCache.put('./hero.html','<div class="hero"><div><h1>unsplash image search</h1></div><search-bar></search-bar></div>');
-$templateCache.put('./search-bar.html','<div>hello from search bar</div>');
-$templateCache.put('./results.html','<div><h2>{{ $ctrl.title }}</h2><form ng-submit="$ctrl.getPhoto(query)"><input type="text" placeholder="Search for Photo" ng-model="query"> <button>Search</button></form>{{query}}<div class="photoHolder"><img ng-src="{{ $ctrl.photoUrl1 }}"></div></div>');}]);})(window.angular);
+$templateCache.put('./app.html','<div class="app--wrapper"><h1>{{::$ctrl.appTitle}}</h1><photos></photos></div>');
+$templateCache.put('./photos.html','<div class="photos--wrapper"><ul><li ng-repeat="photo in $ctrl.photoList track by $index"><img ng-src="{{photo}}"></li></ul></div>');}]);})(window.angular);
