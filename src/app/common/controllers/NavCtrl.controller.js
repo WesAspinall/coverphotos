@@ -4,10 +4,6 @@ function NavCtrl() {
 
   ctrl.selectCategory = selectCategory;
 
-  ctrl.foo = function() {
-    console.log('test from NavCtrl');
-  };
-
   ctrl.categories = [{
     category: 'random',
     selected: true,

@@ -1,4 +1,4 @@
 angular.module('templates', []).run(['$templateCache', function($templateCache) {$templateCache.put('./root.html','<div class="root"><div id="root-view" ui-view></div></div>');
-$templateCache.put('./app-nav.html','<div class="tabs"><ul class="tabs__list"><li ng-repeat="pic in $ctrl.categories track by $index"><a href="" ng-bind="pic.category" ng-click="$ctrl.selectCategory($index)"></a></li></ul><div class="tabs__content" ng-transclude></div></div>');
-$templateCache.put('./app.html','<div class="appwrapper"><h1>{{:: $ctrl.appTitle}}</h1><!--   <h2>wth</h2> --><app-nav><unsplash-pics></unsplash-pics></app-nav></div>');
-$templateCache.put('./unsplash-pics.html','<div class="tabs__content"><div ng-repeat="pic in $ctrl.categories.categories"><p ng-if="pic.selected"><img ng-src="{{pic.url}}"></p></div></div>');}]);
+$templateCache.put('./app-nav.html','<div class="tabs"><ul class="tabs__list"><li ng-repeat="pic in $ctrl.categories track by $index"><a href="" ng-bind="pic.category" ng-click="$ctrl.selectCategory($index)" ng-class="{selected : pic.selected}"></a></li></ul><div class="tabs__content" ng-transclude></div></div>');
+$templateCache.put('./app.html','<div class="appwrapper"><h1>{{:: $ctrl.appTitle}}</h1><app-nav><unsplash-pics></unsplash-pics></app-nav></div>');
+$templateCache.put('./unsplash-pics.html','<div class="tabs__content"><div ng-repeat="pic in $ctrl.categories.categories" ng-transclude><ul class="unsplash"><li ng-if="pic.selected"><a ng-href="{{pic.url}}"><img ng-src="{{pic.url}}"></a></li></ul></div></div>');}]);

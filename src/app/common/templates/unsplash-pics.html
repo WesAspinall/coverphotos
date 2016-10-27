@@ -1,5 +1,7 @@
 <div class='tabs__content'>
-  <div  ng-repeat='pic in $ctrl.categories.categories'>
-    <p ng-if='pic.selected'><img ng-src='{{pic.url}}'></p>
+  <div  ng-repeat='pic in $ctrl.categories.categories' ng-transclude>
+    <ul class='unsplash'>
+    <li ng-if='pic.selected'><a ng-href='{{pic.url}}'><img ng-src='{{pic.url}}'></a></li>
+    </ul>
   </div>
 </div>

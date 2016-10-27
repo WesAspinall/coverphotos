@@ -2,7 +2,7 @@
   <ul class='tabs__list'>
     <li ng-repeat='pic in $ctrl.categories track by $index'>
     
-      <a href='' ng-bind='pic.category' ng-click='$ctrl.selectCategory($index)'></a>
+      <a href='' ng-bind='pic.category' ng-click='$ctrl.selectCategory($index)' ng-class='{selected : pic.selected}' ></a>
 
     </li>
   </ul>
