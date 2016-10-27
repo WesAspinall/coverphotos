@@ -137,60 +137,6 @@ angular
   .component('tabs', tabs);})(window.angular);
 (function(angular){
 'use strict';
-var app = {
-  templateUrl: './app.html',
-  controller: 'AppCtrl'
-};
-
-angular
-  .module('app')
-  .component('app', app)
-  .config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider) {
-
-    $urlRouterProvider.otherwise('/');
-    $stateProvider
-      .state('app', {
-        url: '/',
-        component: 'app'
-      });
-      
-  }]);})(window.angular);
-(function(angular){
-'use strict';
-var appNav = {
-  
-  transclude: true,
-  templateUrl: './app-nav.html',
-  controller: 'NavCtrl'
-
-}
-
-angular
-  .module('app')
-  .component('appNav', appNav);})(window.angular);
-(function(angular){
-'use strict';
-var unsplashPics = {
-
-  bindings: {
-    category: '@'
-  },
-  
-  require: {
-    categories: '^^appNav'
-  },
-
-  transclude: true,
-
-  templateUrl: './unsplash-pics.html',
-  controller: 'PicsCtrl'
-}
-
-angular
-  .module('app')
-  .component('unsplashPics', unsplashPics);})(window.angular);
-(function(angular){
-'use strict';
 function AppCtrl() {
   this.appTitle = 'HD Cover Photos';
 }
@@ -205,10 +151,6 @@ function NavCtrl() {
   ctrl.test = 'test from NavCtrl';
 
   ctrl.selectCategory = selectCategory;
-
-  ctrl.foo = function() {
-    console.log('test from NavCtrl');
-  };
 
   ctrl.categories = [{
     category: 'random',
@@ -268,7 +210,61 @@ angular
   .controller('PicsCtrl', PicsCtrl);})(window.angular);
 (function(angular){
 'use strict';
+var app = {
+  templateUrl: './app.html',
+  controller: 'AppCtrl'
+};
+
+angular
+  .module('app')
+  .component('app', app)
+  .config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider) {
+
+    $urlRouterProvider.otherwise('/');
+    $stateProvider
+      .state('app', {
+        url: '/',
+        component: 'app'
+      });
+      
+  }]);})(window.angular);
+(function(angular){
+'use strict';
+var appNav = {
+  
+  transclude: true,
+  templateUrl: './app-nav.html',
+  controller: 'NavCtrl'
+
+}
+
+angular
+  .module('app')
+  .component('appNav', appNav);})(window.angular);
+(function(angular){
+'use strict';
+var unsplashPics = {
+
+  bindings: {
+    category: '@'
+  },
+  
+  require: {
+    categories: '^^appNav'
+  },
+
+  transclude: true,
+
+  templateUrl: './unsplash-pics.html',
+  controller: 'PicsCtrl'
+}
+
+angular
+  .module('app')
+  .component('unsplashPics', unsplashPics);})(window.angular);
+(function(angular){
+'use strict';
 angular.module('templates', []).run(['$templateCache', function($templateCache) {$templateCache.put('./root.html','<div class="root"><div id="root-view" ui-view></div></div>');
-$templateCache.put('./app-nav.html','<div class="tabs"><ul class="tabs__list"><li ng-repeat="pic in $ctrl.categories track by $index"><a href="" ng-bind="pic.category" ng-click="$ctrl.selectCategory($index)"></a></li></ul><div class="tabs__content" ng-transclude></div></div>');
-$templateCache.put('./app.html','<div class="appwrapper"><h1>{{:: $ctrl.appTitle}}</h1><!--   <h2>wth</h2> --><app-nav><unsplash-pics></unsplash-pics></app-nav></div>');
-$templateCache.put('./unsplash-pics.html','<div class="tabs__content"><div ng-repeat="pic in $ctrl.categories.categories"><p ng-if="pic.selected"><img ng-src="{{pic.url}}"></p></div></div>');}]);})(window.angular);
+$templateCache.put('./app-nav.html','<div class="tabs"><ul class="tabs__list"><li ng-repeat="pic in $ctrl.categories track by $index"><a href="" ng-bind="pic.category" ng-click="$ctrl.selectCategory($index)" ng-class="{selected : pic.selected}"></a></li></ul><div class="tabs__content" ng-transclude></div></div>');
+$templateCache.put('./app.html','<div class="appwrapper"><h1>{{:: $ctrl.appTitle}}</h1><app-nav><unsplash-pics></unsplash-pics></app-nav></div>');
+$templateCache.put('./unsplash-pics.html','<div class="tabs__content"><div ng-repeat="pic in $ctrl.categories.categories" ng-transclude><ul class="unsplash"><li ng-if="pic.selected"><a ng-href="{{pic.url}}"><img ng-src="{{pic.url}}"></a></li></ul></div></div>');}]);})(window.angular);
