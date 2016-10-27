@@ -1,0 +1,10 @@
+<div class='tabs'>
+  <ul class='tabs__list'>
+    <li ng-repeat='pic in $ctrl.categories track by $index'>
+    
+      <a href='' ng-bind='pic.category' ng-click='$ctrl.selectCategory($index)'></a>
+
+    </li>
+  </ul>
+  <div class='tabs__content' ng-transclude></div>
+</div>

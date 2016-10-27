@@ -1,8 +1,8 @@
-<div class='app--wrapper'>
-  <h1>{{::$ctrl.appTitle}}</h1>
-<!--   <photo-nav></photo-nav> -->
-  <photos 
-    photoList = $ctrl.photoList
-    on-update='$ctrl.updateList($event)'>
-  </photos>
+<div class='appwrapper'>
+  <h1>{{:: $ctrl.appTitle}}</h1>
+<!--   <h2>wth</h2> -->
+  <app-nav>
+    <unsplash-pics></unsplash-pics>
+  </app-nav>
 </div>
+
