@@ -137,6 +137,60 @@ angular
   .component('tabs', tabs);})(window.angular);
 (function(angular){
 'use strict';
+var app = {
+  templateUrl: './app.html',
+  controller: 'AppCtrl'
+};
+
+angular
+  .module('app')
+  .component('app', app)
+  .config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider) {
+
+    $urlRouterProvider.otherwise('/');
+    $stateProvider
+      .state('app', {
+        url: '/',
+        component: 'app'
+      });
+      
+  }]);})(window.angular);
+(function(angular){
+'use strict';
+var appNav = {
+  
+  transclude: true,
+  templateUrl: './app-nav.html',
+  controller: 'NavCtrl'
+
+}
+
+angular
+  .module('app')
+  .component('appNav', appNav);})(window.angular);
+(function(angular){
+'use strict';
+var unsplashPics = {
+
+  bindings: {
+    category: '@'
+  },
+  
+  require: {
+    categories: '^^appNav'
+  },
+
+  transclude: true,
+
+  templateUrl: './unsplash-pics.html',
+  controller: 'PicsCtrl'
+}
+
+angular
+  .module('app')
+  .component('unsplashPics', unsplashPics);})(window.angular);
+(function(angular){
+'use strict';
 function AppCtrl() {
   this.appTitle = 'HD Cover Photos';
 }
@@ -208,60 +262,6 @@ function PicsCtrl() {
 angular
   .module('app')
   .controller('PicsCtrl', PicsCtrl);})(window.angular);
-(function(angular){
-'use strict';
-var app = {
-  templateUrl: './app.html',
-  controller: 'AppCtrl'
-};
-
-angular
-  .module('app')
-  .component('app', app)
-  .config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider) {
-
-    $urlRouterProvider.otherwise('/');
-    $stateProvider
-      .state('app', {
-        url: '/',
-        component: 'app'
-      });
-      
-  }]);})(window.angular);
-(function(angular){
-'use strict';
-var appNav = {
-  
-  transclude: true,
-  templateUrl: './app-nav.html',
-  controller: 'NavCtrl'
-
-}
-
-angular
-  .module('app')
-  .component('appNav', appNav);})(window.angular);
-(function(angular){
-'use strict';
-var unsplashPics = {
-
-  bindings: {
-    category: '@'
-  },
-  
-  require: {
-    categories: '^^appNav'
-  },
-
-  transclude: true,
-
-  templateUrl: './unsplash-pics.html',
-  controller: 'PicsCtrl'
-}
-
-angular
-  .module('app')
-  .component('unsplashPics', unsplashPics);})(window.angular);
 (function(angular){
 'use strict';
 angular.module('templates', []).run(['$templateCache', function($templateCache) {$templateCache.put('./root.html','<div class="root"><div id="root-view" ui-view></div></div>');
